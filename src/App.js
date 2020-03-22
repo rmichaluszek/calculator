@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import { Layout, Card, Button, Row, Col } from 'antd';
 
 const {app} = window.require('electron').remote;
 
@@ -8,14 +9,40 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>React + Electron = <span role="img" aria-label="love">😍</span></h2>
-        </div>
-        <p className="App-intro">
-          <b> Release 0.2.7 </b>
-          Version: {app.getVersion()}
-        </p>
+        <Card bodyStyle={{margin: "0px"}} id="card">
+
+          <Row id="display" style={{height:"60px"}}>
+              <input value="0000" id="display-text"/>
+          </Row>
+          <Row gutter={[8, 8]} justify="space-around" align="middle">
+            <Col span={6} ><Button type="primary">1</Button></Col>
+            <Col span={6} ><Button type="primary">2</Button></Col>
+            <Col span={6} ><Button type="primary">3</Button></Col>
+            <Col span={6} ><Button type="secondary">+</Button></Col>
+          </Row>
+          <Row gutter={[8, 8]}>
+            <Col span={6} ><Button type="primary">4</Button></Col>
+            <Col span={6} ><Button type="primary">5</Button></Col>
+            <Col span={6} ><Button type="primary">6</Button></Col>
+            <Col span={6} ><Button type="secondary">-</Button></Col>
+          </Row>
+          <Row gutter={[8, 8]}>
+            <Col span={6} ><Button type="primary">7</Button></Col>
+            <Col span={6} ><Button type="primary">8</Button></Col>
+            <Col span={6} ><Button type="primary">9</Button></Col>
+            <Col span={6} ><Button type="secondary">*</Button></Col>
+          </Row>
+          <Row gutter={[8, 8]}>
+            <Col span={6} ><Button type="danger">C</Button></Col>
+            <Col span={6} ><Button type="primary">0</Button></Col>
+            <Col span={6} ><Button type="secondary">.</Button></Col>
+            <Col span={6} ><Button type="secondary">÷</Button></Col>
+          </Row>
+          <Row gutter={[8, 0]}>
+            <Col span={12} ></Col>
+            <Col span={12} ><Button id="calculate-btn" type="danger">=</Button></Col>
+          </Row>
+        </Card>
       </div>
     );
   }
